@@ -10,9 +10,14 @@ public class TaskQueue {
     private static final LinkedList<Runnable> taskQueue = new LinkedList<>();
 
 
-    public void addTaskToQueue(Runnable task){
+    public static void addTaskToQueue(Runnable task){
         synchronized (taskQueue){
             taskQueue.add(task);
+            taskQueue.notifyAll();
         }
+    }
+
+    public static LinkedList<Runnable> getTaskQueue(){
+        return taskQueue;
     }
 }

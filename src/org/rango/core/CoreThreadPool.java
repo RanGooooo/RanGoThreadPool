@@ -39,13 +39,13 @@ public class CoreThreadPool extends ThreadPool {
 
 
     static {
-
+        initPool();
     }
 
     /**
      * 初始化线程池
      */
-    private void initPool(){
+    private static void initPool(){
         for (int i = 0; i < threadPoolSize; i++) {
             CoreThread coreThread = createCoreThread();
             codeThreadList.add(coreThread);
